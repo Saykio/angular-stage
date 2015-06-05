@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="moduleStage"  >
+<link rel="stylesheet" href="css.css" />
+<head>
+<script src="bower_components/angularjs/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="js/demande.js"></script>
+</head>
+<body ng-controller="StageControleur">
+
+	<table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass"
+		style="display: none;">
+		<tr>
+			<td id="ds_calclass">
+	
+	</table>
+	<form>
+		<div
+			style="width: 270px; padding-top: 10px; padding-bottom: 0px; border: 3px solid #BDBDBD; background: #E6E6E6;">
+			<strong>
+  Type de congés <input type="text" name="motif"
+             ng-model="motif" />
+             <br class='fin'> Date début <input class='decale' type="text" name="userDate1"
+             ng-model="user.date1" />
+             <br class='fin'> Date fin <input class='decale1' type="text" name="userDate2"
+             ng-model="user.date2" />
+<!-- <br>Date de début : <input onclick="ds_sh(this);" name="date"
+						readonly="readonly" style="cursor: text" ng-model ="user.date"/><br /> 
+						<select class='listederoulante1' name="jour">
+						<option selected>Matin
+						
+						<option>Midi
+						
+						<option>Soir
+					
+					</select> <br class='fin'>Date de fin : <input class='decale'
+						onclick="ds_sh(this);" name="date2" readonly="readonly"
+						style="cursor: text" value="" /><br/> <select class='listederoulante'
+						name="jour">
+						<option>Matin
+						
+						<option>Midi
+						
+						<option selected>Soir
+					
+					</select> --> <br>
+					<h4>Vous allez déposer un congé de <span ng-bind="user.date1"></span> à <span ng-bind="user.date2"></span> ! <br>
+					Votre motif est :
+					<span ng-bind="motif"></span>! </h4>
+					<input ng-click="envoyerDemande();" type="submit" value="Ajouter" />				
+				<p>			
+			</strong>
+		</div>	 
+</form>
+	<script src="java.js" type="application/javascript"></script>
+</body>
+
+</html>
