@@ -1,30 +1,66 @@
 <!DOCTYPE html>
-<html ng-app="moduleStage"  >
-<link rel="stylesheet" href="css.css" />
+<html ng-app="moduleStage">
+
 <head>
+<link rel="stylesheet"
+	href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/demande.css" />
 <script src="bower_components/angularjs/angular.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!-- <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script> -->
 <script src="js/demande.js"></script>
+
+
 </head>
 <body ng-controller="StageControleur">
+	<div class="page-header entete">
+		<h1>Demande de congés</h1>
+	</div>
+	<div class="container">
+		<form method="post">
+			<div class="form-group">
+				<label for="motif"> Type de congés </label> <input type="text"
+					name="motif" ng-model="motif" class="form-control"
+					placeholder="Type de congés" />
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="debut">Date de début</label>
+						<p class="input-group">
+							<input type="date" datepicker-popup class="form-control"
+								ng-model="debut" is-open="debutOuvert" close-text="Close" /> <br>
+							<span class="input-group-btn" name ="debut">
+								<button type="button" class="btn btn-default"
+									ng-click="ouvertureDebut($event)">
+									<i class="glyphicon glyphicon-calendar"></i>
+								</button>
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="debut">Date de fin</label>
+						<p class="input-group">
+							<input type="date" datepicker-popup class="form-control"
+								ng-model="fin" is-open="debutFin" close-text="Close" /> <span
+								class="input-group-btn" name ="fin">
+								<button type="button" class="btn btn-default"
+									ng-click="ouvertureFin($event)">
+									<i class="glyphicon glyphicon-calendar"></i>
+								</button>
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
 
-	<table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass"
-		style="display: none;">
-		<tr>
-			<td id="ds_calclass">
-	
-	</table>
-	<form>
-		<div
-			style="width: 270px; padding-top: 10px; padding-bottom: 0px; border: 3px solid #BDBDBD; background: #E6E6E6;">
-			<strong>
-  Type de congés <input type="text" name="motif"
-             ng-model="motif" />
-             <br class='fin'> Date début <input class='decale' type="text" name="userDate1"
-             ng-model="user.date1" />
-             <br class='fin'> Date fin <input class='decale1' type="text" name="userDate2"
-             ng-model="user.date2" />
-<!-- <br>Date de début : <input onclick="ds_sh(this);" name="date"
+
+			<!-- <br>Date de début : <input onclick="ds_sh(this);" name="date"
 						readonly="readonly" style="cursor: text" ng-model ="user.date"/><br /> 
 						<select class='listederoulante1' name="jour">
 						<option selected>Matin
@@ -43,16 +79,23 @@
 						
 						<option selected>Soir
 					
-					</select> --> <br>
-					<h4>Vous allez déposer un congé de <span ng-bind="user.date1"></span> à <span ng-bind="user.date2"></span> ! <br>
-					Votre motif est :
-					<span ng-bind="motif"></span>! </h4>
-					<input ng-click="envoyerDemande();" type="submit" value="Ajouter" />				
-				<p>			
+					</select> -->
+			<br>
+			<h4>
+				Vous allez déposer un congé de <span>{{debut |
+					date:'dd-MMM-yyyy'}}</span> à <span>{{fin | date:'dd-MMM-yyyy'}}</span> !
+				<br> Votre motif est : <span ng-bind="motif"></span>!
+			</h4>
+			<h4>
+				<p ng-show="erreur">Service indisponible</p>
+				<p ng-show="valide">Votre requête a bien été enregistrée !
+			</h4>
+			<button ng-click="envoyerDemande()" type="submit"
+				class="btn btn-default">Ajouter</button>
 			</strong>
-		</div>	 
+	</div>
 </form>
-	<script src="java.js" type="application/javascript"></script>
+</div>
+<script src="java.js" type="application/javascript"></script>
 </body>
-
 </html>
